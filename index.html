@@ -11,11 +11,16 @@
     *{box-sizing:border-box;}
     body{
       font-family:'Inter',sans-serif;
-      background:linear-gradient(135deg,#d7ecff 0%,#b8c6ff 35%,#9ad0ff 70%,#a4a1ff 100%);
+      background:radial-gradient(at 20% 20%, rgba(255,255,255,0.45), transparent 45%),
+                 radial-gradient(at 80% 0%, rgba(162,201,255,0.6), transparent 40%),
+                 radial-gradient(at 50% 70%, rgba(120,200,255,0.45), transparent 55%),
+                 linear-gradient(135deg,#b4d8ff 0%,#a2c4ff 35%,#9ac5ff 55%,#adc8ff 75%,#87a0ff 100%);
       color:var(--text);
       margin:0;
       padding:0;
       min-height:100vh;
+      position:relative;
+      overflow-x:hidden;
     }
     header{
       padding:80px clamp(24px,4vw,60px);
@@ -47,6 +52,28 @@
       box-shadow:0 25px 60px rgba(52,84,209,0.18);
       backdrop-filter:blur(6px);
     }
+    .butterfly{
+      position:fixed;
+      width:120px;
+      height:120px;
+      opacity:0.45;
+      animation:float 18s ease-in-out infinite;
+      pointer-events:none;
+      z-index:0;
+    }
+    .butterfly svg{
+      width:100%;
+      height:100%;
+      filter:drop-shadow(0 10px 25px rgba(72,120,255,0.3));
+    }
+    .butterfly-1{top:12%;left:6%;animation-delay:0s;}
+    .butterfly-2{top:65%;right:8%;animation-delay:4s;}
+    .butterfly-3{top:30%;right:25%;animation-delay:8s;}
+    @keyframes float{
+      0%{transform:translateY(0) rotate(0deg) scale(1);}
+      50%{transform:translateY(-20px) rotate(6deg) scale(1.05);}
+      100%{transform:translateY(0) rotate(0deg) scale(1);}
+    }
     section h2{margin:0 0 20px;font-size:1.4rem;}
     .about p{line-height:1.7;color:var(--muted);}
     .gallery{display:flex;justify-content:center;}
@@ -67,6 +94,57 @@
   </style>
 </head>
 <body>
+  <div class="butterfly butterfly-1" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">
+      <path d="M97 86c-18-22-40-39-63-43-11-2-22 7-21 18 2 21 34 47 62 47 10 0 17-7 22-12z" fill="url(#gradWingLeft)"/>
+      <path d="M103 86c18-22 40-39 63-43 11-2 22 7 21 18-2 21-34 47-62 47-10 0-17-7-22-12z" fill="url(#gradWingRight)"/>
+      <path d="M98 82c-4 6-5 17-5 23 0 8 4 17 7 23 3 6 7 11 10 11s7-5 10-11c3-6 7-15 7-23 0-6-1-17-5-23-4-7-9-11-12-11s-8 4-12 11z" fill="rgba(120,150,255,0.8)"/>
+      <defs>
+        <linearGradient id="gradWingLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+          <stop offset="60%" stop-color="rgba(130,170,255,0.85)"/>
+        </linearGradient>
+        <linearGradient id="gradWingRight" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(120,170,255,0.85)"/>
+          <stop offset="80%" stop-color="rgba(255,255,255,0.9)"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <div class="butterfly butterfly-2" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">
+      <path d="M97 86c-18-22-40-39-63-43-11-2-22 7-21 18 2 21 34 47 62 47 10 0 17-7 22-12z" fill="url(#gradWingLeft2)"/>
+      <path d="M103 86c18-22 40-39 63-43 11-2 22 7 21 18-2 21-34 47-62 47-10 0-17-7-22-12z" fill="url(#gradWingRight2)"/>
+      <path d="M98 82c-4 6-5 17-5 23 0 8 4 17 7 23 3 6 7 11 10 11s7-5 10-11c3-6 7-15 7-23 0-6-1-17-5-23-4-7-9-11-12-11s-8 4-12 11z" fill="rgba(105,130,250,0.8)"/>
+      <defs>
+        <linearGradient id="gradWingLeft2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.85)"/>
+          <stop offset="60%" stop-color="rgba(102,151,255,0.8)"/>
+        </linearGradient>
+        <linearGradient id="gradWingRight2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(90,140,255,0.8)"/>
+          <stop offset="80%" stop-color="rgba(255,255,255,0.85)"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <div class="butterfly butterfly-3" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">
+      <path d="M97 86c-18-22-40-39-63-43-11-2-22 7-21 18 2 21 34 47 62 47 10 0 17-7 22-12z" fill="url(#gradWingLeft3)"/>
+      <path d="M103 86c18-22 40-39 63-43 11-2 22 7 21 18-2 21-34 47-62 47-10 0-17-7-22-12z" fill="url(#gradWingRight3)"/>
+      <path d="M98 82c-4 6-5 17-5 23 0 8 4 17 7 23 3 6 7 11 10 11s7-5 10-11c3-6 7-15 7-23 0-6-1-17-5-23-4-7-9-11-12-11s-8 4-12 11z" fill="rgba(130,170,255,0.8)"/>
+      <defs>
+        <linearGradient id="gradWingLeft3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+          <stop offset="60%" stop-color="rgba(140,185,255,0.85)"/>
+        </linearGradient>
+        <linearGradient id="gradWingRight3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(125,170,255,0.85)"/>
+          <stop offset="80%" stop-color="rgba(255,255,255,0.9)"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
   <header id="home">
     <!-- 把你的头像图片命名为 me.jpg，放到 d:\FF\images\me.jpg，浏览器即可显示 -->
     <img class="avatar" src="images/me.jpg" alt="美食博主邓月峰">
